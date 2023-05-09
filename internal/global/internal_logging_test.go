@@ -25,7 +25,6 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/go-logr/logr/funcr"
 	"github.com/go-logr/stdr"
 )
 
@@ -88,9 +87,5 @@ func TestLogLevel(t *testing.T) {
 }
 
 func newBuffLogger(buf *bytes.Buffer, verbosity int) logr.Logger {
-	return funcr.New(func(prefix, args string) {
-		_, _ = buf.Write([]byte(args))
-	}, funcr.Options{
-		Verbosity: verbosity,
-	})
+        return nil
 }

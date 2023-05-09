@@ -26,7 +26,6 @@ import (
 
 	ottest "go.opentelemetry.io/otel/internal/internaltest"
 
-	"github.com/go-logr/logr/funcr"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
@@ -615,7 +614,7 @@ func BenchmarkSpanProcessor(b *testing.B) {
 }
 
 func BenchmarkSpanProcessorVerboseLogging(b *testing.B) {
-	global.SetLogger(funcr.New(func(prefix, args string) {}, funcr.Options{Verbosity: 5}))
+	global.SetLogger(nil)
 	tp := sdktrace.NewTracerProvider(
 		sdktrace.WithBatcher(
 			tracetest.NewNoopExporter(),
